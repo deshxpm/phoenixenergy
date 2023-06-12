@@ -5,8 +5,10 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from .serializers import *
 
 class MetricsViewSet(viewsets.ModelViewSet):
+	permission_classes = [AllowAny]
 	serializer_class = EnergySerializer
 	queryset = Energy.objects.all()
+
 
 	def get_queryset(self, pk=None):
 		start = self.request.query_params.get('start')
